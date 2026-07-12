@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#173d3a">
+<title>Lisbon Place Guide · Chris, Tash, Mia & Lily</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌅</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@400;500&family=Bricolage+Grotesque:opsz,wght@12..96,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#17302e;--muted:#5a6865;--paper:#f7f2e9;--cream:#fffaf2;--green:#173d3a;--sage:#dce7de;--coral:#e87452;--gold:#d2a24b;--line:rgba(23,48,46,.14);--shadow:0 22px 70px rgba(31,49,45,.12);--serif:"Fraunces",Georgia,serif;--sans:"DM Sans","Segoe UI",sans-serif}
+*{box-sizing:border-box}
+body{margin:0;color:var(--ink);background:var(--paper);font-family:var(--sans);line-height:1.55}
+button,a{font:inherit}a{color:inherit}
+.shell{width:min(1240px,calc(100% - 48px));margin:auto}
+.topbar{position:sticky;top:0;z-index:30;background:rgba(247,242,233,.88);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.topbar .shell{min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{font-family:var(--serif);font-size:20px;text-decoration:none}
+.pill{border:1px solid var(--line);background:rgba(255,255,255,.6);border-radius:999px;padding:9px 14px;text-decoration:none;cursor:pointer;transition:.2s ease;white-space:nowrap}
+.pill:hover{background:#fff}
+.eyebrow{text-transform:uppercase;letter-spacing:.18em;font-size:12px;font-weight:600}
+/* Hero */
+.hero{min-height:560px;position:relative;display:grid;align-items:end;color:#fff;overflow:hidden;background:#244e49}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(12,38,35,.78),rgba(12,38,35,.12) 55%,rgba(12,38,35,.18));z-index:1}
+.hero::after{content:"";position:absolute;inset:auto 0 0;height:7px;background:linear-gradient(90deg,var(--coral) 0 35%,var(--gold) 35% 62%,#8bb5a4 62%);z-index:2}
+.hero-inner{position:relative;z-index:2;padding:120px 0 64px;max-width:880px}
+.hero .eyebrow{color:#fbd9a8}
+.hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(44px,6.5vw,82px);line-height:.98;margin:14px 0 18px}
+.hero-deck{font-size:clamp(16px,2vw,21px);max-width:700px;color:rgba(255,255,255,.9);margin:0}
+.hero-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.hero-meta span{border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.12);padding:8px 13px;border-radius:999px;backdrop-filter:blur(10px);font-size:14px}
+/* Sections */
+main .shell{padding-top:64px}
+.section{margin:0 0 72px}
+.section-head{display:flex;justify-content:space-between;gap:28px;align-items:end;margin-bottom:24px}
+.section-head h2{font:500 clamp(30px,4vw,46px)/1.05 var(--serif);margin:0}
+.section-head p{max-width:460px;margin:0;color:var(--muted)}
+.intro-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(270px,.65fr);gap:clamp(32px,6vw,80px);align-items:start;margin-bottom:72px}
+.lead{font:500 clamp(26px,3.4vw,44px)/1.14 var(--serif);margin:0}
+.actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px}
+.action{display:inline-flex;align-items:center;gap:8px;text-decoration:none;padding:11px 16px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.55);transition:.2s ease}
+.action:hover{background:#fff}
+.action.primary{background:var(--green);color:#fff;border-color:var(--green)}
+.family-note{border-left:3px solid var(--gold);padding:4px 0 4px 20px;color:var(--muted)}
+.family-note strong{display:block;color:var(--ink);margin-bottom:7px;font-size:12px;text-transform:uppercase;letter-spacing:.13em}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px}
+.chip{display:inline-flex;align-items:center;gap:5px;padding:5px 10px;border-radius:999px;background:var(--sage);font-size:12px}
+.chip.rating{background:#fff0cf}
+/* Gallery */
+.gallery{display:grid;gap:12px}
+.gallery.g3{grid-template-columns:1.35fr .65fr;grid-template-rows:255px 255px}
+.gallery.g3 button:first-child{grid-row:1/3}
+.gallery.g2{grid-template-columns:1.35fr .65fr;grid-template-rows:420px}
+.gallery.g1{grid-template-columns:1fr;grid-template-rows:440px}
+.gallery button{border:0;padding:0;overflow:hidden;cursor:zoom-in;background:#ddd6c8;border-radius:20px}
+.gallery img{width:100%;height:100%;object-fit:cover;display:block}
+.caption-line{margin:13px 0 0;color:var(--muted);font-size:12px}
+/* Review pulse */
+.review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.review{padding:24px;border-top:4px solid var(--gold);background:var(--cream);border-radius:0 0 18px 18px;box-shadow:0 10px 32px rgba(23,48,46,.07)}
+.review:nth-child(2){border-color:var(--coral)}
+.review:nth-child(3){border-color:#8bb5a4}
+.review-label{text-transform:uppercase;letter-spacing:.12em;font-size:11px;font-weight:600;color:var(--muted)}
+.review p{margin:9px 0 0}
+.source-note{margin-top:16px;font-size:12px;color:var(--muted)}
+/* Practical strip */
+.practical{display:grid;grid-template-columns:repeat(3,1fr);border-block:1px solid var(--line)}
+.practical>div{padding:24px 24px 24px 0}
+.practical>div+div{border-left:1px solid var(--line);padding-left:24px}
+.practical small{display:block;text-transform:uppercase;letter-spacing:.12em;font-size:11px;margin-bottom:6px;color:var(--muted)}
+.practical strong{font:500 22px var(--serif)}
+/* Nearby */
+.nearby{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.nearby a{display:block;position:relative;min-height:215px;padding:22px;text-decoration:none;color:#fff;overflow:hidden;background:var(--green);border-radius:20px}
+.nearby img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.nearby a::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 35%,rgba(9,34,34,.85))}
+.nearby span{position:absolute;z-index:1;left:22px;right:22px;bottom:18px;font:500 24px var(--serif)}
+.nearby small{position:absolute;z-index:1;left:22px;bottom:52px;text-transform:uppercase;letter-spacing:.14em;font-size:10px;color:rgba(255,255,255,.85)}
+/* Prev / next */
+.stepper{display:flex;justify-content:space-between;gap:14px;margin:0 0 72px}
+.stepper a{flex:1;text-decoration:none;border:1px solid var(--line);background:rgba(255,255,255,.5);border-radius:18px;padding:18px 20px;transition:.2s ease}
+.stepper a:hover{background:#fff}
+.stepper a:last-child{text-align:right}
+.stepper small{display:block;text-transform:uppercase;letter-spacing:.13em;font-size:11px;color:var(--muted);margin-bottom:4px}
+.stepper strong{font:500 20px var(--serif)}
+/* Footer */
+.footer{padding:34px 0 48px;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
+.footer .shell{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;padding-top:0}
+.footer strong{color:var(--ink)}
+/* Lightbox */
+dialog{border:0;padding:0;background:#0c2623;color:#fff;width:min(1180px,calc(100% - 32px));max-width:none;border-radius:22px;box-shadow:0 35px 120px rgba(0,0,0,.4)}
+dialog::backdrop{background:rgba(7,27,25,.78);backdrop-filter:blur(7px)}
+.lightbox-img{width:100%;height:min(72vh,740px);object-fit:contain;display:block;background:#0c2623}
+.lightbox-bar{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 18px}
+.lightbox-bar button{border:1px solid rgba(255,255,255,.45);color:#fff;background:transparent;border-radius:999px;padding:9px 14px;cursor:pointer}
+.lightbox-text{min-width:0}
+.lightbox-text strong{display:block}
+.lightbox-text span{color:rgba(255,255,255,.65);font-size:12px}
+/* Missing */
+.missing{min-height:70vh;display:grid;place-items:center;text-align:center;padding:30px}
+.missing h1{font:500 56px var(--serif);margin:8px 0 0}
+.missing a{display:inline-block;margin-top:22px}
+@media(prefers-reduced-motion:no-preference){
+  html{scroll-behavior:smooth}
+  .pill:hover,.action:hover,.stepper a:hover{transform:translateY(-1px)}
+  .gallery img{transition:transform .5s ease}
+  .gallery button:hover img{transform:scale(1.03)}
+}
+@media(max-width:900px){
+  .shell{width:min(100% - 32px,760px)}
+  .hero{min-height:480px}
+  .hero-inner{padding:100px 0 52px}
+  .intro-grid,.review-grid,.nearby,.practical{grid-template-columns:1fr}
+  .practical>div{padding:18px 0}
+  .practical>div+div{border-left:0;border-top:1px solid var(--line);padding-left:0}
+  .section-head{display:block}
+  .section-head p{margin-top:10px}
+  .gallery.g3{grid-template-columns:1fr 1fr;grid-template-rows:300px 170px}
+  .gallery.g3 button:first-child{grid-column:1/3;grid-row:auto}
+  .gallery.g2{grid-template-columns:1fr;grid-template-rows:300px 220px}
+  .stepper{flex-direction:column}
+  .stepper a:last-child{text-align:left}
+}
+@media(max-width:600px){
+  .shell{width:calc(100% - 28px)}
+  .topbar .brand{font-size:16px}
+  main .shell{padding-top:44px}
+  .section{margin-bottom:52px}
+}
+@media print{
+  .topbar,.actions,.nearby,.stepper,dialog{display:none!important}
+  body{background:#fff}
+  .hero{min-height:340px}
+}
+@page{margin:14mm}
+
+/* Shared Lisbon field-journal language from the family itinerary. */
+:root{
+ --ink:#102a43;--muted:#607486;--paper:#f3f7f8;--cream:#fffef9;
+ --green:#0067b9;--sage:#dcecf4;--coral:#d93d78;--gold:#f2c84b;
+ --line:rgba(16,42,67,.2);--shadow:0 18px 50px rgba(16,42,67,.14);
+ --serif:"Bricolage Grotesque","Arial Narrow",sans-serif;
+ --sans:"Afacad Flux","Segoe UI",sans-serif;--mono:"IBM Plex Mono",monospace
+}
+html{background:var(--paper)}
+body{font-size:17px;line-height:1.48;letter-spacing:.005em;background:var(--paper)}
+::selection{background:var(--gold);color:var(--ink)}
+.shell{width:min(1180px,calc(100% - 64px))}
+.topbar{background:rgba(243,247,248,.94);border-bottom:2px solid var(--ink);backdrop-filter:blur(12px)}
+.topbar .shell{min-height:58px}
+.brand{font:500 13px/1 var(--mono);letter-spacing:.08em}
+.pill{border:0;border-radius:0;background:transparent;padding:7px 0;border-bottom:1px solid currentColor;font:500 12px/1.2 var(--mono)}
+.pill:hover{background:transparent;color:var(--green)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--gold);outline-offset:4px}
+.eyebrow,.review-label,.practical small,.nearby small,.stepper small,.caption-line,.source-note{font-family:var(--mono);font-weight:500;letter-spacing:.1em}
+
+.hero{min-height:650px;align-items:center;background:var(--ink)}
+.hero-img{filter:saturate(.88) contrast(1.03)}
+.hero::before{background:linear-gradient(90deg,rgba(5,26,48,.9) 0%,rgba(5,26,48,.65) 48%,rgba(5,26,48,.12) 76%)}
+.hero::after{height:16px;background:conic-gradient(from 45deg,#fff 25%,var(--green) 0 50%,#fff 0 75%,var(--green) 0) 0 0/20px 20px}
+.hero-inner{padding:94px 0 104px;max-width:none}
+.hero .eyebrow{color:#fff;font-size:11px}
+.hero h1{font:500 clamp(66px,9.5vw,124px)/.84 var(--serif);letter-spacing:-.06em;margin:32px 0 30px;max-width:900px;text-wrap:balance}
+.hero-deck{font-size:clamp(19px,2.3vw,27px);line-height:1.3;max-width:720px;color:#fff}
+.hero-meta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;max-width:780px;margin-top:46px;border-top:1px solid rgba(255,255,255,.65)}
+.hero-meta span{border:0;border-right:1px solid rgba(255,255,255,.42);border-bottom:1px solid rgba(255,255,255,.42);border-radius:0;background:transparent;padding:11px 14px 11px 0;backdrop-filter:none;font:400 11px/1.4 var(--mono)}
+.hero-meta span+span{padding-left:14px}
+@media(prefers-reduced-motion:no-preference){.hero-inner>*{animation:guide-in .6s both}.hero-inner h1{animation-delay:.07s}.hero-deck{animation-delay:.14s}.hero-meta{animation-delay:.21s}}
+@keyframes guide-in{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+main .shell{padding-top:84px}
+.section{margin-bottom:88px}
+.intro-grid{grid-template-columns:minmax(0,1.25fr) minmax(280px,.75fr);gap:90px;margin-bottom:94px;padding-bottom:72px;border-bottom:2px solid var(--ink)}
+.lead{font:500 clamp(37px,4.8vw,60px)/1.01 var(--serif);letter-spacing:-.045em}
+.intro-grid>.eyebrow,.intro-grid .eyebrow{font-size:10px!important;color:var(--green)!important}
+.family-note{border-left:5px solid var(--green);padding:6px 0 6px 24px;color:#425f76;font-size:18px}
+.family-note strong{font:500 10px/1.3 var(--mono);letter-spacing:.1em;color:var(--ink)}
+.actions{gap:18px;align-items:center;margin-top:30px}
+.action{border:0;border-radius:0;background:transparent;padding:8px 0;border-bottom:1px solid currentColor;font:500 11px/1.3 var(--mono)}
+.action:hover{background:transparent;color:var(--green)}
+.action.primary{padding:10px 13px;background:var(--green);border:2px solid var(--green);color:#fff}
+.action.primary:hover{background:var(--ink);border-color:var(--ink);color:#fff}
+.chips{gap:0}
+.chip{padding:0;border-radius:0;background:transparent!important;font:400 10px/1.4 var(--mono);letter-spacing:.05em;text-transform:uppercase}
+.chip.rating{color:var(--ink);box-shadow:inset 0 -.55em 0 rgba(242,200,75,.65)}
+
+.section-head{align-items:start;margin-bottom:28px;padding-top:26px;border-top:2px solid var(--ink)}
+.section-head h2{font:500 clamp(39px,5vw,64px)/.96 var(--serif);letter-spacing:-.045em}
+.section-head p{font-size:17px;line-height:1.45;color:#52697b}
+.gallery{gap:3px;background:var(--ink)}
+.gallery.g3{grid-template-rows:310px 310px}
+.gallery.g2{grid-template-rows:500px}
+.gallery.g1{grid-template-rows:520px}
+.gallery button{border-radius:0;background:var(--ink)}
+.gallery img{filter:saturate(.9) contrast(1.02)}
+.caption-line{font-size:10px;line-height:1.5;letter-spacing:.03em;margin-top:14px}
+
+.review-grid{gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.review{padding:26px 26px 30px 0;border:0;border-radius:0;background:transparent;box-shadow:none}
+.review+.review{border-left:1px solid var(--line);padding-left:26px}
+.review-label{font-size:10px;color:var(--green)}
+.review p{font-size:19px;line-height:1.4;margin-top:12px;color:var(--ink)}
+.source-note{font-size:10px;letter-spacing:.03em}
+
+.practical{background:var(--green);color:#fff;border:0}
+.practical>div{padding:28px}
+.practical>div+div{border-left:1px solid rgba(255,255,255,.45);padding-left:28px}
+.practical small{font-size:10px;color:#d7e9f6}
+.practical strong{font:500 clamp(23px,3vw,34px)/1.05 var(--serif);letter-spacing:-.025em}
+
+.nearby{gap:3px;background:var(--ink)}
+.nearby a{min-height:270px;border-radius:0;padding:24px}
+.nearby a::after{background:linear-gradient(transparent 28%,rgba(5,26,48,.9))}
+.nearby span{font:500 29px/1 var(--serif);letter-spacing:-.03em;bottom:22px}
+.nearby small{font-size:10px;bottom:58px}
+
+.stepper{gap:0;margin-bottom:84px;border-block:2px solid var(--ink)}
+.stepper a{border:0;border-radius:0;background:transparent;padding:22px 0}
+.stepper a+a{border-left:1px solid var(--line);padding-left:24px}
+.stepper a:hover{background:transparent;color:var(--green)}
+.stepper small{font-size:10px}
+.stepper strong{font:500 24px/1.1 var(--serif);letter-spacing:-.025em}
+.footer{border-top:16px solid var(--green);padding:34px 0 48px;font:400 11px/1.55 var(--mono)}
+
+dialog{background:var(--ink);border-radius:4px;box-shadow:0 32px 100px rgba(5,26,48,.48)}
+dialog::backdrop{background:rgba(5,26,48,.82);backdrop-filter:blur(6px)}
+.lightbox-img{background:var(--ink)}
+.lightbox-bar{padding:14px 18px;border-top:1px solid rgba(255,255,255,.35)}
+.lightbox-bar button{border:0;border-radius:0;padding:7px 0;border-bottom:1px solid currentColor;font:500 10px/1.2 var(--mono)}
+.lightbox-text{font-family:var(--mono)}
+.missing h1{font:500 56px/1 var(--serif);letter-spacing:-.04em}
+
+@media(max-width:900px){
+ .shell{width:min(100% - 40px,760px)}
+ .hero{min-height:590px}
+ .hero::before{background:linear-gradient(90deg,rgba(5,26,48,.9),rgba(5,26,48,.35))}
+ .hero-inner{padding:88px 0 94px}
+ .intro-grid{grid-template-columns:1fr;gap:42px;margin-bottom:74px;padding-bottom:58px}
+ .review-grid,.nearby,.practical{grid-template-columns:1fr}
+ .review{padding:24px 0}
+ .review+.review{border-left:0;border-top:1px solid var(--line);padding-left:0}
+ .practical>div{padding:22px}
+ .practical>div+div{border-left:0;border-top:1px solid rgba(255,255,255,.4);padding-left:22px}
+ .gallery.g3{grid-template-rows:330px 190px}
+ .gallery.g2{grid-template-columns:1fr;grid-template-rows:330px 240px}
+}
+@media(max-width:600px){
+ .shell{width:calc(100% - 30px)}
+ .topbar .shell{min-height:54px}
+ .topbar .brand{font-size:10px}
+ .pill{font-size:10px}
+ .hero{min-height:650px}
+ .hero h1{font-size:clamp(58px,19vw,82px);margin:26px 0}
+ .hero-deck{font-size:19px}
+ .hero-meta{grid-template-columns:1fr;margin-top:36px}
+ .hero-meta span{border-right:0;padding-left:0!important}
+ main .shell{padding-top:62px}
+ .lead{font-size:41px}
+ .section{margin-bottom:64px}
+ .section-head{display:block}
+ .section-head p{margin-top:12px}
+ .gallery.g3{grid-template-columns:1fr 1fr;grid-template-rows:280px 150px}
+ .gallery.g2{grid-template-rows:280px 190px}
+ .gallery.g1{grid-template-rows:330px}
+ .nearby a{min-height:220px}
+ .stepper{flex-direction:column}
+ .stepper a+a{border-left:0;border-top:1px solid var(--line);padding-left:0}
+ .stepper a:last-child{text-align:left}
+ .lightbox-img{width:auto;height:auto;max-width:100%;max-height:65vh;margin:auto}
+ .lightbox-bar{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+ .lightbox-text{grid-column:1/-1;grid-row:1;text-align:center}
+ #lightbox-prev{grid-column:1;justify-self:start}
+ #lightbox-next{grid-column:2;justify-self:center}
+ #lightbox-close{grid-column:3;justify-self:end}
+}
+@media print{.hero::after{display:none}.hero{min-height:360px}}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="shell"><a class="brand" href="index.html">LIS / PLACE NOTES</a><a class="pill" href="index.html">← Full itinerary</a></div></header>
+<div id="app"></div>
+<dialog id="lightbox" aria-label="Photography gallery">
+  <img class="lightbox-img" id="lightbox-image" alt="">
+  <div class="lightbox-bar"><button id="lightbox-prev" type="button">← Previous</button><div class="lightbox-text"><strong id="lightbox-title"></strong><span id="lightbox-count"></span></div><button id="lightbox-next" type="button">Next →</button><button id="lightbox-close" type="button">Close</button></div>
+</dialog>
+
+<script>
+const ORDER=['hotel','saopedro','jncquoi','alfama','tueeu','ginjal','valedorio','caparica','coco','animal','chiado','paz','lumi','frade','cascais','hifen','senhora','viagraca','portas','belem','pasteis','ofrade'];
+const base={
+hotel:{
+ t:'HOTEL HOTEL',k:'Your base',day:'All week',time:'Tv. Glória 22',
+ hero:'assets/gloria-funicular.jpg',photos:['assets/gloria-funicular.jpg','assets/avenida-kiosk.jpg','assets/lisbon-sol-hero.jpg'],
+ intro:'A small, design-led base on Travessa da Glória, beside the yellow Glória funicular and perfectly placed between Avenida da Liberdade, Príncipe Real and Chiado.',
+ family:'This is the reset point for all four of you: two-hour pauses before every evening, easy taxis in both directions and Monday dinner downstairs at Animal.',
+ why:'The best feature is logistical — São Pedro de Alcântara and Lumi are minutes away on foot, so sunsets never require a journey.',
+ love:'Guests praise the design-led rooms and an unbeatably central position.',know:'The lively surrounding streets can mean some city noise at night.',move:'Use the famous funicular street as your landmark; the hotel sits right beside its lower run.',
+ visit:'Home between outings',best:'The 2-hour evening resets',
+ map:'https://www.google.com/maps/search/?api=1&query=HOTEL+HOTEL+Travessa+da+Gloria+22+Lisbon',site:'https://www.hotelhotel.pt/',
+ near:['saopedro','jncquoi','lumi']},
+saopedro:{
+ t:'São Pedro de Alcântara',k:'Viewpoint · sunset & sunrise',day:'Saturday 18 & Tuesday 21',time:'20:20 sunset · 05:55 sunrise',rating:'Sunset 20:59 · Sunrise 06:28',
+ hero:'assets/sao-pedro-twilight.jpg',photos:['assets/sao-pedro-twilight.jpg','assets/castelo-sunset.jpg','assets/lisbon-sunrise-2.jpg'],
+ intro:'A garden terrace looking across the valley to São Jorge Castle, Graça and the eastern hills — five minutes from the hotel and the trip’s opening and quietest-light view.',
+ family:'Saturday evening it is the shared first golden hour of the holiday; Tuesday at dawn it is Chris’s solo shoot while Tash, Mia and Lily sleep.',
+ why:'The same terrace gives you both ends of the light: the first sunset together and a blue-hour sunrise with the castle catching first warmth.',
+ love:'A sweeping castle-and-rooftops panorama that visitors call Lisbon’s easiest great view.',know:'Popular and lively around sunset; dawn is almost private.',move:'For Tuesday, leave at 05:55 and use the upper street-level terrace if the lower garden is closed. Frame wide at 24–70mm, then isolate the castle and domes with the 70–200mm.',
+ visit:'40–75 minutes',best:'Blue hour, either end of the day',
+ map:'https://www.google.com/maps/search/?api=1&query=Miradouro+de+Sao+Pedro+de+Alcantara',site:'https://www.visitlisboa.com/en/places/miradouro-de-s-pedro-de-alcantara',
+ near:['hotel','lumi','jncquoi']},
+jncquoi:{
+ t:'JNcQUOI Avenida',k:'First-night dinner',day:'Saturday 18',time:'21:30',rating:'★ 4.6 Google',
+ hero:'assets/avenida.jpg',photos:['assets/avenida.jpg','assets/avenida-kiosk.jpg','assets/seafood-platter.jpg'],
+ intro:'A polished, glamorous dining room on Avenida da Liberdade with confident service and a menu broad enough for four different appetites after a day of travelling.',
+ family:'The point of the first night: celebratory but zero-effort — a gentle downhill walk from the sunset terrace, no cross-city journey, everyone lands softly.',
+ why:'Choose it for a handsome room, easy glamour and the shortest possible route between sunset and starters.',
+ love:'Diners praise the glamorous room, polished service and broad menu.',know:'Premium pricing matches the Avenida address.',move:'Reserve 21:30 for four and mention you arrive in Lisbon that evening; smart-casual works perfectly.',
+ visit:'About 2 hours',best:'Reserved dinner',
+ map:'https://www.google.com/maps/search/?api=1&query=JNcQUOI+Avenida+Lisbon',site:'https://www.jncquoi.com/',
+ near:['saopedro','hotel','animal']},
+alfama:{
+ t:'Castelo & Alfama',k:'Neighbourhood wander',day:'Sunday 19',time:'11:30–14:15',
+ hero:'assets/santo-estevao.jpg',photos:['assets/santo-estevao.jpg','assets/alfama-wide.jpg','assets/alfama.jpg'],
+ intro:'Lisbon’s oldest quarter is best treated as a downhill drift, not a checklist: castle walls, Portas do Sol, Santa Luzia’s tiles, washing lines, sudden river views and the cathedral at the bottom.',
+ family:'Taxi up to the castle area and let gravity do the work. Let each of the four of you choose a turn occasionally — the wrong lanes are usually the best ones.',
+ why:'This is Lisbon at walking pace — the architectural detail and lived-in streets the rest of the week’s views are all about.',
+ love:'Atmospheric lanes, tiled façades and surprise river views around every corner.',know:'Steep paving and daytime crowds — mid-July heat rewards the taxi-up, walk-down plan.',move:'Start around São Jorge Castle by 11:30, drift via Portas do Sol and Santa Luzia, and be near the cathedral by 14:15 for lunch close by.',
+ visit:'About 3 hours',best:'Late morning, downhill',
+ map:'https://www.google.com/maps/dir/?api=1&origin=Castelo+de+Sao+Jorge&destination=Lisbon+Cathedral&waypoints=Miradouro+das+Portas+do+Sol%7CMiradouro+de+Santa+Luzia',site:'https://www.visitlisboa.com/en/places/alfama',
+ near:['tueeu','portas','senhora']},
+tueeu:{
+ t:'Lisboa Tu e Eu 2',k:'Alfama lunch',day:'Sunday 19',time:'14:30',rating:'★ 4.6 Google',
+ hero:'assets/ameijoas.jpg',photos:['assets/ameijoas.jpg','assets/arroz-marisco.jpg','assets/alfama.jpg'],
+ intro:'A small, honest Alfama tasca known for warm, personal service and Portuguese petiscos that feel rooted in the neighbourhood you have just walked through.',
+ family:'Share rather than over-order: octopus salad, bacalhau, clams and the day’s specials, passed around the table after the morning’s wander.',
+ why:'The deliberately local Sunday table — the welcome is mentioned in reviews as often as the food.',
+ love:'Warm, personal service and honest Portuguese petiscos.',know:'Small and intimate — best enjoyed unhurried, not squeezed between appointments.',move:'Order amêijoas à Bulhão Pato if they have them, share everything and keep the afternoon free for the hotel reset.',
+ visit:'About 90 minutes',best:'Late Sunday lunch',
+ map:'https://www.google.com/maps/search/?api=1&query=Lisboa+Tu+e+Eu+2',site:'https://www.google.com/maps/search/?api=1&query=Lisboa+Tu+e+Eu+2',
+ near:['alfama','ginjal','portas']},
+ginjal:{
+ t:'Cais do Ginjal',k:'River sunset · ferry',day:'Sunday 19',time:'19:15 · sunset 20:58',
+ hero:'assets/bridge-sunset-2.jpg',photos:['assets/bridge-sunset-2.jpg','assets/cacilhas-ferries.jpg','assets/ginjal-quay.jpg'],
+ intro:'Cross the Tagus by ferry from Cais do Sodré to Cacilhas, then walk the weathered old quay for open water, the 25 de Abril Bridge and Lisbon’s hills glowing across the river.',
+ family:'The ferry itself is part of the treat — ten minutes on the water with the whole city behind you, then an unhurried walk into the sunset.',
+ why:'This is the trip’s widest sunset: the sun drops behind the bridge with the entire skyline lit in front of you.',
+ love:'One of the most memorable views back to Lisbon anywhere on the river.',know:'The old riverside path is rough and derelict in stretches — sensible shoes, and keep to the open public route.',move:'Walk out while the light is high and turn back towards Cacilhas just after the sun goes — do not let dusk catch you far along the quay.',
+ visit:'About 90 minutes',best:'Golden hour on the water',
+ map:'https://www.google.com/maps/search/?api=1&query=Cais+do+Ginjal+Almada',site:'https://ttsl.pt/en/',
+ near:['valedorio','alfama','senhora']},
+valedorio:{
+ t:'Vale do Rio',k:'South-bank dinner',day:'Sunday 19',time:'21:15',rating:'★ 4.5 Google',
+ hero:'assets/sardinhas.jpg',photos:['assets/sardinhas.jpg','assets/arroz-marisco.jpg','assets/cacilhas-ferries.jpg'],
+ intro:'A dependable, unfussy Portuguese restaurant near Cacilhas for grilled fish, seafood and traditional dishes after the river sunset — without the ordeal of chasing a Ponto Final table.',
+ family:'Relaxed and open on Sunday evening: ask what fish is best, share a salad and chips, and let the day wind down before the ferry home.',
+ why:'The practical, honest alternative on the south bank — chosen so the sunset walk ends in a table, not a queue.',
+ love:'Fresh grilled fish and unfussy local cooking.',know:'Service is relaxed — it suits an unhurried evening, not a rush.',move:'Reserve for 21:15, ask for the day’s fish grilled whole, and check the return ferry time before you sit down.',
+ visit:'About 90 minutes',best:'Post-sunset dinner',
+ map:'https://www.google.com/maps/search/?api=1&query=Vale+do+Rio+Almada',site:'https://www.google.com/maps/search/?api=1&query=Vale+do+Rio+Almada',
+ near:['ginjal','tueeu','alfama']},
+caparica:{
+ t:'Praia do Rei',k:'Atlantic beach day',day:'Monday 20',time:'11:15–16:30',
+ hero:'assets/caparica.jpg',photos:['assets/caparica.jpg','assets/seafood-platter.jpg'],
+ intro:'Part of Costa da Caparica’s long Atlantic sweep: broad sand, proper waves and far more space than Lisbon’s town beaches — the breezy, informal beach day of the week.',
+ family:'Sunscreen, water and something warm for the Atlantic breeze. The water is colder and livelier than Cascais — follow the lifeguard flags and let the day be simple.',
+ why:'Wild Atlantic scale within forty minutes of the hotel: the deliberately unpolished counterpart to Wednesday’s elegant Cascais.',
+ love:'A huge sandy beach with genuine Atlantic energy.',know:'Cold water, wind and waves are part of the deal — this is peak-UV time of day, so shade matters.',move:'Reserve parasols or loungers through Coco Beach if offered, swim inside the flags and leave by 16:30 to protect the evening reset.',
+ visit:'About 5 hours with lunch',best:'Late morning onward',
+ map:'https://www.google.com/maps/search/?api=1&query=Praia+do+Rei+Costa+da+Caparica',site:'https://costa-da-caparica.com/beach-guide',
+ near:['coco','animal','hotel']},
+coco:{
+ t:'Coco Beach',k:'Beachfront lunch',day:'Monday 20',time:'14:00',rating:'★ 4.5 Google',
+ hero:'assets/seafood-platter.jpg',photos:['assets/seafood-platter.jpg','assets/sardinhas.jpg','assets/caparica.jpg'],
+ intro:'An easy beach restaurant right at Praia do Rei: grilled fish, seafood, salads and long cold drinks, with the sand a few steps away for the afternoon.',
+ family:'Nobody has to change, nobody has to travel — lunch happens where the towels already are, then it is straight back to the water.',
+ why:'The whole point of Monday: a proper seafood lunch without leaving the beach.',
+ love:'The beachfront setting and grilled fish stand out in reviews.',know:'Service can slow right down when the beach is at its busiest.',move:'Book lunch ahead and ask whether loungers or parasols can be arranged for your date at the same time.',
+ visit:'About 90 minutes',best:'Long beach lunch',
+ map:'https://www.google.com/maps/search/?api=1&query=Coco+Beach+Praia+do+Rei+Costa+da+Caparica',site:'https://www.google.com/maps/search/?api=1&query=Coco+Beach+Praia+do+Rei+Costa+da+Caparica',
+ near:['caparica','animal','hotel']},
+animal:{
+ t:'Animal',k:'Dinner at your hotel',day:'Monday 20',time:'21:00',rating:'★ 4.7 Google',
+ hero:'assets/lisbon-sol-hero.jpg',photos:['assets/lisbon-sol-hero.jpg','assets/gloria-funicular.jpg','assets/avenida-kiosk.jpg'],
+ intro:'HOTEL HOTEL’s own garden restaurant mixes fish, meat, vegetables and raw dishes in a lush, contemporary setting — downstairs from your rooms.',
+ family:'The deliberately low-effort evening after the beach: dress for dinner, enjoy it properly, and simply go upstairs when everyone is ready.',
+ why:'Zero journey home on the night everyone is most pleasantly tired.',
+ love:'A lush garden atmosphere and creative plates; guests especially value the design-led setting.',know:'It is a destination in its own right — book even as hotel guests in July.',move:'Reserve 21:00 for four when you confirm the room, and let the kitchen guide the sharing.',
+ visit:'About 2 hours',best:'Reserved dinner',
+ map:'https://www.google.com/maps/search/?api=1&query=Animal+Restaurant+Hotel+Hotel+Lisbon',site:'https://www.hotelhotel.pt/',
+ near:['hotel','caparica','coco']},
+chiado:{
+ t:'MNAC & Chiado',k:'Art & architecture',day:'Tuesday 21',time:'11:30–14:15',
+ hero:'assets/camoes-chiado.jpg',photos:['assets/camoes-chiado.jpg','assets/bertrand.jpg','assets/carmo.jpg'],
+ intro:'A walkable mix of Portuguese art, the world’s oldest bookshop, cafés, Carmo’s roofless Gothic arches and the elegant streets rebuilt after the 1755 earthquake.',
+ family:'Treat MNAC as an option, not an obligation — if the family mood prefers bookshops and tiled façades, follow that instinct without guilt.',
+ why:'Culture at an easy pace, downhill from the hotel, with shade and coffee never more than a street away.',
+ love:'Art, architecture and bookshops combine easily within a few blocks.',know:'The main streets get busy and international-brand heavy by midday.',move:'Walk down via Livraria Bertrand and Largo do Carmo, and use the side streets for the atmosphere the retail corridor hides.',
+ visit:'About 3 hours',best:'Late morning',
+ map:'https://www.google.com/maps/search/?api=1&query=MNAC+Lisbon',site:'https://www.museusemonumentos.pt/en/museus-e-monumentos/museu-nacional-de-arte-contemporanea-do-chiado',
+ near:['paz','lumi','frade']},
+paz:{
+ t:'Churrasqueira da Paz',k:'Charcoal chicken lunch',day:'Tuesday 21',time:'15:00',rating:'★ 4.7 Google',
+ hero:'assets/frango-piri-piri.jpg',photos:['assets/frango-piri-piri.jpg','assets/carmo.jpg','assets/camoes-chiado.jpg'],
+ intro:'A compact neighbourhood churrasqueira specialising in smoky, charcoal-grilled chicken served on the bone — Chris’s deliberately local lunch of the week.',
+ family:'Order the frango no churrasco com piri-piri, chips and salad. It is small, close-set and informal; that is exactly the point.',
+ why:'The meal that tastes like Lisbon rather than a restaurant scene — excellent value and zero ceremony.',
+ love:'Smoky chicken, crisp chips and excellent value.',know:'Tiny and popular with no real reservations — a short wait is normal, and hours can be idiosyncratic.',move:'Confirm it is open Tuesday before committing the day’s main meal, arrive ready to wait briefly, and order the piri-piri on the side for Mia and Lily to dose themselves.',
+ visit:'About an hour',best:'Late lunch',
+ map:'https://www.google.com/maps/search/?api=1&query=Churrasqueira+da+Paz+Lisbon',ta:'https://www.tripadvisor.co.uk/Restaurant_Review-g189158-d7398366-Reviews-Churrasqueira_da_Paz-Lisbon_Lisbon_District_Central_Portugal.html',site:'https://www.google.com/maps/search/?api=1&query=Churrasqueira+da+Paz+Lisbon',
+ near:['chiado','lumi','frade']},
+lumi:{
+ t:'Lumi Rooftop',k:'Rooftop sunset',day:'Tuesday 21',time:'20:00 · sunset 20:57',
+ hero:'assets/lisbon-sol-hero.jpg',photos:['assets/lisbon-sol-hero.jpg','assets/sao-pedro-twilight.jpg','assets/castelo-sunset.jpg'],
+ intro:'A warm, relaxed rooftop above The Lumiares with open views over Lisbon’s tiled roofs towards the castle and the Tagus — a few minutes’ walk from the hotel.',
+ family:'Cocktails for Chris and Tash, mocktails for Mia and Lily: the venue publishes a children’s menu and genuinely welcomes families at sunset.',
+ why:'The family-shared golden hour of the week, with drinks — no summit hike, no crowd scrum, just the roofs turning gold.',
+ love:'Warm service and a lovely rooftop outlook over old Lisbon.',know:'An outdoor table is the detail that makes it — the indoor room misses the point.',move:'Reserve outdoors at 20:00 for four, mention the girls’ ages, and keep the table until the colour fades before the short taxi to dinner.',
+ visit:'About 90 minutes',best:'Golden hour',
+ map:'https://www.google.com/maps/search/?api=1&query=Lumi+Rooftop+Lisbon',site:'https://www.thelumiares.com/eat-and-drink/lumi-rooftop/',
+ near:['saopedro','frade','hotel']},
+frade:{
+ t:'Frade dos Mares',k:'Seafood dinner',day:'Tuesday 21',time:'21:30',rating:'★ 4.7 Google',
+ hero:'assets/polvo-lagareiro.jpg',photos:['assets/polvo-lagareiro.jpg','assets/ameijoas.jpg','assets/seafood-platter.jpg'],
+ intro:'A highly regarded Santos restaurant for Portuguese fish and seafood, more intimate and attentive than the big seafood halls.',
+ family:'A short taxi from the rooftop. Ask about the octopus, the prawns and the day’s fish — this is the polished seafood table of the week.',
+ why:'Excellent produce with real warmth, at a scale where the room still feels personal.',
+ love:'Excellent seafood and notably attentive service.',know:'The intimate room makes booking essential.',move:'Book 21:30 and start with the polvo à lagareiro — it is the dish reviewers return for.',
+ visit:'About 2 hours',best:'Reserved dinner',
+ map:'https://www.google.com/maps/search/?api=1&query=Frade+dos+Mares+Lisbon',site:'https://www.thefork.com/restaurant/frade-dos-mares-r68518',
+ near:['lumi','chiado','paz']},
+cascais:{
+ t:'Praia da Conceição',k:'Sheltered beach day',day:'Wednesday 22',time:'11:15–16:30',
+ hero:'assets/conceicao-1.jpg',photos:['assets/conceicao-1.jpg','assets/conceicao-2.jpg','assets/cascais.jpg'],
+ intro:'Calmer and more sheltered than Caparica, with an elegant seaside town immediately behind the sand — Conceição and Duquesa sit side by side, so choose on arrival.',
+ family:'The gentler of the two beach days: warmer, flatter water for long swims, with ice cream, shade and the handsome town a two-minute walk away.',
+ why:'Sand and civilisation together — the beach day for people who also like towns.',
+ love:'A beautiful town with calm, convenient beaches.',know:'The central sands fill quickly in midsummer.',move:'Arrive by 11:15 to secure shade, and after lunch choose either more beach or a town wander — not both, forced.',
+ visit:'About 5 hours with lunch',best:'Late morning onward',
+ map:'https://www.google.com/maps/search/?api=1&query=Praia+da+Conceicao+Cascais',site:'https://www.visitcascais.com/',
+ near:['hifen','senhora','viagraca']},
+hifen:{
+ t:'Hífen',k:'Bay-view lunch',day:'Wednesday 22',time:'14:00',rating:'★ 4.6 Google',
+ hero:'assets/cascais.jpg',photos:['assets/cascais.jpg','assets/seafood-platter.jpg','assets/conceicao-1.jpg'],
+ intro:'A lively, bay-facing Cascais restaurant built around modern Portuguese plates designed for the middle of the table.',
+ family:'Order across the menu and share everything — four curious eaters beat four separate mains here. Keep some appetite for Graça tonight.',
+ why:'The contemporary, elegant counterpoint to Monday’s barefoot beach lunch.',
+ love:'Inventive sharing plates with a bay view.',know:'The lively room can feel loud at peak lunch.',move:'Book 14:00, sit outside if offered, and let the table order in two waves rather than all at once.',
+ visit:'About 90 minutes',best:'Reserved lunch',
+ map:'https://www.google.com/maps/search/?api=1&query=Hifen+Cascais',ta:'https://www.tripadvisor.co.uk/Restaurant_Review-g189154-d12778440-Reviews-Hifen-Cascais_Lisbon_District_Central_Portugal.html',site:'https://www.hifenrestaurant.com/',
+ near:['cascais','senhora','viagraca']},
+senhora:{
+ t:'Senhora do Monte',k:'The grand sunset',day:'Wednesday 22',time:'20:00 · sunset 20:56',
+ hero:'assets/lisbon-sunset-panorama.jpg',photos:['assets/lisbon-sunset-panorama.jpg','assets/senhora.jpg','assets/castelo-sunset.jpg'],
+ intro:'The widest central Lisbon panorama: castle, Baixa, the Tagus and the bridge all read clearly from this high Graça terrace as the sun drops behind them.',
+ family:'Taxi up and keep your energy for the view. Stand slightly away from the central rail for a calmer family spot as the light turns.',
+ why:'Lisbon’s great reveal, saved for the last full evening — the whole week’s geography visible in one glowing sweep.',
+ love:'The most complete panoramic view in central Lisbon.',know:'No longer a secret — expect company at golden hour and limited seating.',move:'Arrive by 20:00, watch the sun go at 20:56, then walk two minutes to Via Graça while the sky is still pink.',
+ visit:'About an hour',best:'40 minutes before sunset',
+ map:'https://www.google.com/maps/search/?api=1&query=Miradouro+da+Senhora+do+Monte',site:'https://www.visitlisboa.com/en/places/miradouro-da-senhora-do-monte',
+ near:['viagraca','portas','alfama']},
+viagraca:{
+ t:'Via Graça',k:'Dinner with the view',day:'Wednesday 22',time:'21:20',rating:'★ 4.5 Google',
+ hero:'assets/castelo-sunset.jpg',photos:['assets/castelo-sunset.jpg','assets/lisbon-sunset-panorama.jpg','assets/senhora.jpg'],
+ intro:'Refined Portuguese cooking behind windows that look across old Lisbon — the restaurant continues the viewpoint rather than replacing it.',
+ family:'The natural finale to the grand-view evening: the same panorama carried into dinner, with the city lights coming up as the plates arrive.',
+ why:'View and kitchen in one room, two minutes’ walk from the miradouro — no journey between the evening’s two acts.',
+ love:'Portuguese cooking paired with a remarkable view.',know:'A window table makes the experience — and the kitchen still matters more than the seat.',move:'Request a window or view table when booking 21:20, and accept a good inner table gracefully if the window row is gone.',
+ visit:'About 2 hours',best:'Reserved dinner after sunset',
+ map:'https://www.google.com/maps/search/?api=1&query=Via+Graca+Restaurant+Lisbon',site:'https://www.restauranteviagraca.pt/en/',
+ near:['senhora','alfama','portas']},
+portas:{
+ t:'Portas do Sol & Santa Luzia',k:'Sunrise photography',day:'Thursday 23',time:'05:45–07:30 · sunrise 06:30',
+ hero:'assets/lisbon-sunrise-2.jpg',photos:['assets/lisbon-sunrise-2.jpg','assets/lisbon-sunrise-1.jpg','assets/portas-evening.jpg'],
+ intro:'An east-facing balcony above Alfama, opening across São Vicente, Santo Estêvão and terracotta roofs to the Tagus — the classic Lisbon dawn view, empty at first light.',
+ family:'Chris’s second and bigger sunrise: an early Uber while the family sleeps, the sun rising over the river, then the tiled arches of Santa Luzia in soft light before breakfast.',
+ why:'This is the one unrepeatable shoot of the trip — the postcard balcony with nobody on it, in the exact light it was built to face.',
+ love:'Magical early light over Alfama and the Tagus.',know:'Quiet at dawn, rammed by mid-morning — the early Uber is the whole trick.',move:'Set up by 06:00. Start wide for the rising sun over the river, switch to the long lens for compressed rooftop layers, then walk to Santa Luzia for tiles and arches before the lanes wake up.',
+ visit:'About 105 minutes',best:'Blue hour into sunrise',
+ map:'https://www.google.com/maps/search/?api=1&query=Miradouro+das+Portas+do+Sol+Lisbon',site:'https://www.lisbonportugaltourism.com/guide/miradouro-das-portas-do-sol.html',
+ near:['alfama','belem','pasteis']},
+belem:{
+ t:'Jerónimos & Belém',k:'Monumental Lisbon',day:'Thursday 23',time:'11:30–13:00',
+ hero:'assets/belem-wide.jpg',photos:['assets/belem-wide.jpg','assets/jeronimos-cloister.jpg','assets/belem.jpg'],
+ intro:'Lisbon’s ceremonial waterfront: Manueline stone carved like rope and coral, the cloister’s luminous arcades and the river opening out towards the Atlantic.',
+ family:'Prioritise the monastery exterior and cloister if the queue is sensible. The architecture and riverfront matter more than completing every attraction on the final day.',
+ why:'The strongest architectural moment of the week, saved for the long goodbye.',
+ love:'Extraordinary Manueline detail and maritime history.',know:'Long, exposed queues are the recurring frustration — July midday needs a plan.',move:'Book timed cloister tickets online before the trip, and remember the church with Vasco da Gama’s tomb is free even when the cloister queue is not worth it.',
+ visit:'About 90 minutes',best:'First timed slot you can get',
+ map:'https://www.google.com/maps/search/?api=1&query=Jeronimos+Monastery+Lisbon',ta:'https://www.tripadvisor.co.uk/Attraction_Review-g189158-d195318-Reviews-Jeronimos_Monastery-Lisbon_Lisbon_District_Central_Portugal.html',site:'https://www.museusemonumentos.pt/en/museus-e-monumentos/mosteiro-dos-jeronimos-e-capela-de-sao-jeronimo',
+ near:['pasteis','ofrade','portas']},
+pasteis:{
+ t:'Pastéis de Belém',k:'The original tart',day:'Thursday 23',time:'13:00',rating:'★ 4.6 Google · since 1837',
+ hero:'assets/pasteis-nata.jpg',photos:['assets/pasteis-nata.jpg','assets/belem.jpg','assets/belem-wide.jpg'],
+ intro:'The original custard-tart bakery, still working from its secret recipe beside Jerónimos since 1837 — warm pastry, cinnamon, icing sugar, blue-tiled rooms.',
+ family:'Have them warm at a table inside: one each, then an honest family vote on whether a second round is required. (It usually is.)',
+ why:'Not a snack — a ritual. The one queue in Lisbon that is actually worth understanding rather than avoiding.',
+ love:'Warm custard tarts and beautiful tiled rooms.',know:'The takeaway counter scrum is not always the quickest or nicest route.',move:'Walk past the takeaway line into the tiled interior and ask for a table — the seated rooms turn over faster than they look.',
+ visit:'30–45 minutes',best:'Right after the monastery',
+ map:'https://www.google.com/maps/search/?api=1&query=Pasteis+de+Belem',site:'https://pasteisdebelem.pt/en/',
+ near:['belem','ofrade','portas']},
+ofrade:{
+ t:'O Frade',k:'The last table',day:'Thursday 23',time:'14:30',rating:'★ 4.6 Google',
+ hero:'assets/arroz-marisco.jpg',photos:['assets/arroz-marisco.jpg','assets/polvo-lagareiro.jpg','assets/belem-wide.jpg'],
+ intro:'A compact, counter-led Belém restaurant bringing polished technique to the flavours of the Alentejo — informal enough for lunch, memorable enough to close the trip.',
+ family:'Sit at the counter if offered: the theatre of the kitchen is part of the meal, and it suits a last lunch that nobody wants to feel like an ending.',
+ why:'Modern Alentejo cooking a short walk from the monastery — the week’s final proper table, minutes from the riverfront goodbye walk.',
+ love:'Confident Alentejo flavours and counter-seat theatre.',know:'Compact and convivial — booking ahead is essential.',move:'Book the 14:30 lunch, take the counter, and state your departure time when seated so the kitchen paces the plates.',
+ visit:'About 90 minutes',best:'Reserved late lunch',
+ map:'https://www.google.com/maps/search/?api=1&query=O+Frade+Lisbon',site:'https://www.google.com/maps/search/?api=1&query=O+Frade+Lisbon',
+ near:['belem','pasteis','portas']}
+};
+const app=document.getElementById('app');
+const slug=new URLSearchParams(location.search).get('place')||'hotel';
+const place=base[slug];
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+if(!place){
+ app.innerHTML='<div class="missing"><div><p class="eyebrow">Lisbon place guide</p><h1>Place not found</h1><a class="action primary" href="index.html">Return to the itinerary</a></div></div>';
+}else{
+ document.title=place.t+' · Lisbon Place Guide';
+ const photos=place.photos.filter(Boolean);
+ const idx=ORDER.indexOf(slug);
+ const prev=idx>0?ORDER[idx-1]:null, next=idx>=0&&idx<ORDER.length-1?ORDER[idx+1]:null;
+ const ta=place.ta||('https://www.tripadvisor.co.uk/Search?q='+encodeURIComponent(place.t+' Lisbon'));
+ app.innerHTML=`
+ <header class="hero"><img class="hero-img" src="${place.hero}" alt="${esc(place.t)}"><div class="shell hero-inner"><div class="eyebrow">${esc(place.k)} · ${esc(place.day)}</div><h1>${esc(place.t)}</h1><p class="hero-deck">${esc(place.intro)}</p><div class="hero-meta"><span>When / ${esc(place.time)}</span><span>Allow / ${esc(place.visit)}</span><span>Best / ${esc(place.best)}</span></div></div></header>
+ <main><div class="shell">
+ <section class="intro-grid"><div><p class="eyebrow" style="color:var(--coral)">Why it earns its place</p><p class="lead">${esc(place.why)}</p>${place.rating?`<div class="chips"><span class="chip rating">${esc(place.rating)}</span></div>`:''}<div class="actions"><a class="action primary" href="${place.map}" target="_blank" rel="noopener">Google Maps & reviews ↗</a><a class="action" href="${ta}" target="_blank" rel="noopener">Tripadvisor ↗</a><a class="action" href="${place.site}" target="_blank" rel="noopener">Official information ↗</a></div></div><aside class="family-note"><strong>The family lens</strong>${esc(place.family)}</aside></section>
+ <section class="section"><div class="section-head"><h2>See the place</h2><p>Open any photograph full screen. Sunrise and sunset stops are shown in the light you will actually find them in.</p></div><div class="gallery g${photos.length}">${photos.map((src,i)=>`<button type="button" data-photo="${i}" aria-label="Open photograph ${i+1} of ${esc(place.t)}"><img loading="${i?'lazy':'eager'}" src="${src}" alt="${esc(place.t)} photograph ${i+1}"></button>`).join('')}</div><p class="caption-line">Photography: Wikimedia Commons contributors and the trip’s curated image set; individual licences remain with each creator.</p></section>
+ <section class="section"><div class="section-head"><h2>Review pulse</h2><p>Paraphrased themes from public visitor feedback, checked 11 July 2026 — not promotional quotes.</p></div><div class="review-grid"><article class="review"><span class="review-label">What people love</span><p>${esc(place.love)}</p></article><article class="review"><span class="review-label">Worth knowing</span><p>${esc(place.know)}</p></article><article class="review"><span class="review-label">Our best move</span><p>${esc(place.move)}</p></article></div><p class="source-note">Ratings and hours change — open the live listing above before relying on either.</p></section>
+ <section class="section"><div class="practical"><div><small>Allow</small><strong>${esc(place.visit)}</strong></div><div><small>Best moment</small><strong>${esc(place.best)}</strong></div><div><small>In your week</small><strong>${esc(place.day)}</strong></div></div></section>
+ <section class="section"><div class="section-head"><h2>Continue nearby</h2><p>The places that naturally belong to the same part of the day.</p></div><div class="nearby">${place.near.map(n=>`<a href="?place=${n}"><img loading="lazy" src="${base[n].hero}" alt=""><small>${esc(base[n].day)}</small><span>${esc(base[n].t)} →</span></a>`).join('')}</div></section>
+ <nav class="stepper" aria-label="Previous and next stop">${prev?`<a href="?place=${prev}"><small>← Previous stop</small><strong>${esc(base[prev].t)}</strong></a>`:'<span></span>'}${next?`<a href="?place=${next}"><small>Next stop →</small><strong>${esc(base[next].t)}</strong></a>`:''}</nav>
+ </div>
+ <footer class="footer"><div class="shell"><div><strong>Lisbon, shared slowly</strong><br>Chris · Tash · Mia & Lily · 18–23 July 2026</div><div>Part of the family itinerary — <a href="index.html">back to the full week</a>.</div></div></footer></main>`;
+ const dialog=document.getElementById('lightbox'),large=document.getElementById('lightbox-image'),count=document.getElementById('lightbox-count'),title=document.getElementById('lightbox-title');
+ let current=0;
+ const show=i=>{current=(i+photos.length)%photos.length;large.src=photos[current];large.alt=place.t+' photograph '+(current+1);title.textContent=place.t;count.textContent='Image '+(current+1)+' of '+photos.length};
+ app.querySelectorAll('[data-photo]').forEach(b=>b.addEventListener('click',()=>{show(Number(b.dataset.photo));dialog.showModal()}));
+ document.getElementById('lightbox-prev').addEventListener('click',()=>show(current-1));
+ document.getElementById('lightbox-next').addEventListener('click',()=>show(current+1));
+ document.getElementById('lightbox-close').addEventListener('click',()=>dialog.close());
+ dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close()});
+ document.addEventListener('keydown',e=>{if(!dialog.open)return;if(e.key==='ArrowLeft')show(current-1);if(e.key==='ArrowRight')show(current+1)});
+}
+</script>
+</body>
+</html>
