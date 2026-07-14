@@ -288,7 +288,7 @@ dialog::backdrop{background:rgba(5,26,48,.82);backdrop-filter:blur(6px)}
 </dialog>
 
 <script>
-const ORDER=['hotel','saopedro','marrecreo','alfama','tueeu','ginjal','valedorio','caparica','coco','picapau','chiado','paz','lumi','frade','cascais','hifen','senhora','viagraca','portas','belem','pasteis','ofrade'];
+const ORDER=['hotel','saopedro','marrecreo','alfama','tueeu','ginjal','valedorio','caparica','coco','picapau','chiado','paz','lumi','trama','cascais','hifen','senhora','piteu','portas','belem','pasteis','ofrade'];
 const base={
 hotel:{
  t:'HOTEL HOTEL',k:'Your base',day:'All week',time:'Tv. Glória 22',
@@ -351,12 +351,12 @@ ginjal:{
  map:'https://www.google.com/maps/search/?api=1&query=Cais+do+Ginjal+Almada',site:'https://ttsl.pt/en/',
  near:['valedorio','alfama','senhora']},
 valedorio:{
- t:'Vale do Rio',k:'South-bank dinner',day:'Sunday 19',time:'21:15',rating:'★ 4.5 Google',
+ t:'Vale do Rio',k:'South-bank dinner · requested',day:'Sunday 19',time:'21:30 · awaiting confirmation',rating:'★ 4.5 Google',
  hero:'assets/sardinhas.jpg',photos:['assets/sardinhas.jpg','assets/arroz-marisco.jpg','assets/cacilhas-ferries.jpg'],
  intro:'A dependable, unfussy Portuguese restaurant near Cacilhas for grilled fish, seafood and traditional dishes after the river sunset — without the ordeal of chasing a Ponto Final table.',
  family:'Relaxed and open on Sunday evening: ask what fish is best, share a salad and chips, and let the day wind down before the ferry home.',
  why:'The practical, honest alternative on the south bank — chosen so the sunset walk ends in a table, not a queue.',
- love:'Fresh grilled fish and unfussy local cooking.',know:'Service is relaxed — it suits an unhurried evening, not a rush.',move:'Reserve for 21:15, ask for the day’s fish grilled whole, and check the return ferry time before you sit down.',
+ love:'Fresh grilled fish and unfussy local cooking.',know:'The 21:30 table has been requested but is not yet confirmed.',move:'Watch for the restaurant’s reply, ask for the day’s fish grilled whole, and check the return ferry time before you sit down.',
  visit:'About 90 minutes',best:'Post-sunset dinner',
  map:'https://www.google.com/maps/search/?api=1&query=Vale+do+Rio+Almada',site:'https://www.google.com/maps/search/?api=1&query=Vale+do+Rio+Almada',
  near:['ginjal','tueeu','alfama']},
@@ -399,7 +399,7 @@ chiado:{
  love:'Art, architecture and bookshops combine easily within a few blocks.',know:'The main streets get busy and international-brand heavy by midday.',move:'Walk down via Livraria Bertrand and Largo do Carmo, and use the side streets for the atmosphere the retail corridor hides.',
  visit:'About 3 hours',best:'Late morning',
  map:'https://www.google.com/maps/search/?api=1&query=MNAC+Lisbon',site:'https://www.museusemonumentos.pt/en/museus-e-monumentos/museu-nacional-de-arte-contemporanea-do-chiado',
- near:['paz','lumi','frade']},
+ near:['paz','lumi','trama']},
 paz:{
  t:'Churrasqueira da Paz',k:'Charcoal chicken lunch',day:'Tuesday 21',time:'15:00',rating:'★ 4.7 Google',
  hero:'assets/frango-piri-piri.jpg',photos:['assets/frango-piri-piri.jpg','assets/carmo.jpg','assets/camoes-chiado.jpg'],
@@ -409,7 +409,7 @@ paz:{
  love:'Smoky chicken, crisp chips and excellent value.',know:'Tiny and popular with no real reservations — a short wait is normal, and hours can be idiosyncratic.',move:'Confirm it is open Tuesday before committing the day’s main meal, arrive ready to wait briefly, and order the piri-piri on the side for Mia and Lily to dose themselves.',
  visit:'About an hour',best:'Late lunch',
  map:'https://www.google.com/maps/search/?api=1&query=Churrasqueira+da+Paz+Lisbon',ta:'https://www.tripadvisor.co.uk/Restaurant_Review-g189158-d7398366-Reviews-Churrasqueira_da_Paz-Lisbon_Lisbon_District_Central_Portugal.html',site:'https://www.google.com/maps/search/?api=1&query=Churrasqueira+da+Paz+Lisbon',
- near:['chiado','lumi','frade']},
+ near:['chiado','lumi','trama']},
 lumi:{
  t:'Lumi Rooftop',k:'Rooftop sunset',day:'Tuesday 21',time:'20:00 · sunset 20:57',
  hero:'assets/lisbon-sol-hero.jpg',photos:['assets/lisbon-sol-hero.jpg','assets/sao-pedro-twilight.jpg','assets/castelo-sunset.jpg'],
@@ -419,16 +419,16 @@ lumi:{
  love:'Warm service and a lovely rooftop outlook over old Lisbon.',know:'An outdoor table is the detail that makes it — the indoor room misses the point.',move:'Reserve outdoors at 20:00 for four, mention the girls’ ages, and keep the table until the colour fades before the short taxi to dinner.',
  visit:'About 90 minutes',best:'Golden hour',
  map:'https://www.google.com/maps/search/?api=1&query=Lumi+Rooftop+Lisbon',site:'https://www.thelumiares.com/eat-and-drink/lumi-rooftop/',
- near:['saopedro','frade','hotel']},
-frade:{
- t:'Frade dos Mares',k:'Seafood dinner',day:'Tuesday 21',time:'21:30',rating:'★ 4.7 Google',
- hero:'assets/polvo-lagareiro.jpg',photos:['assets/polvo-lagareiro.jpg','assets/ameijoas.jpg','assets/seafood-platter.jpg'],
- intro:'A highly regarded Santos restaurant for Portuguese fish and seafood, more intimate and attentive than the big seafood halls.',
- family:'A short taxi from the rooftop. Ask about the octopus, the prawns and the day’s fish — this is the polished seafood table of the week.',
- why:'Excellent produce with real warmth, at a scale where the room still feels personal.',
- love:'Excellent seafood and notably attentive service.',know:'The intimate room makes booking essential.',move:'Book 21:30 and start with the polvo à lagareiro — it is the dish reviewers return for.',
- visit:'About 2 hours',best:'Reserved dinner',
- map:'https://www.google.com/maps/search/?api=1&query=Frade+dos+Mares+Lisbon',site:'https://www.thefork.com/restaurant/frade-dos-mares-r68518',
+ near:['saopedro','trama','hotel']},
+trama:{
+ t:'Trama Pasta Fresca',k:'Handmade pasta dinner',day:'Tuesday 21',time:'21:30 · confirmed',rating:'Table for four',
+ hero:'assets/trama-pasta-fresca.jpg',photos:['assets/trama-pasta-fresca.jpg','assets/camoes-chiado.jpg','assets/rossio.jpg'],
+ intro:'A welcoming Baixa restaurant built around handmade fresh pasta, served beneath old stone arches on Rua da Vitória.',
+ family:'The menu is easy to share and family-friendly, with fresh pasta at its centre and enough creative detail to make Tuesday dinner feel distinct from the week’s Portuguese tables.',
+ why:'A confirmed late table close to Baixa, pairing the evening’s rooftop drinks with a warm, relaxed pasta dinner.',
+ love:'Handmade pasta, attentive service and a characterful stone-arched room.',know:'The menu mixes Italian technique with global and seafood influences rather than staying strictly traditional.',move:'Your table for four is confirmed at 21:30. Head downhill from Lumi to Rua da Vitória 28 and keep the confirmation handy.',
+ visit:'About 90 minutes',best:'Confirmed dinner',
+ map:'https://www.google.com/maps/search/?api=1&query=Trama+Pasta+Fresca+Rua+da+Vitoria+28+Lisbon',site:'https://www.tramapastafresca.com/',
  near:['lumi','chiado','paz']},
 cascais:{
  t:'Praia da Conceição',k:'Sheltered beach day',day:'Wednesday 22',time:'11:15–16:30',
@@ -439,7 +439,7 @@ cascais:{
  love:'A beautiful town with calm, convenient beaches.',know:'The central sands fill quickly in midsummer.',move:'Arrive by 11:15 to secure shade, and after lunch choose either more beach or a town wander — not both, forced.',
  visit:'About 5 hours with lunch',best:'Late morning onward',
  map:'https://www.google.com/maps/search/?api=1&query=Praia+da+Conceicao+Cascais',site:'https://www.visitcascais.com/',
- near:['hifen','senhora','viagraca']},
+ near:['hifen','senhora','piteu']},
 hifen:{
  t:'Hífen',k:'Bay-view lunch',day:'Wednesday 22',time:'14:00',rating:'★ 4.6 Google',
  hero:'assets/cascais.jpg',photos:['assets/cascais.jpg','assets/seafood-platter.jpg','assets/conceicao-1.jpg'],
@@ -449,26 +449,26 @@ hifen:{
  love:'Inventive sharing plates with a bay view.',know:'The lively room can feel loud at peak lunch.',move:'Book 14:00, sit outside if offered, and let the table order in two waves rather than all at once.',
  visit:'About 90 minutes',best:'Reserved lunch',
  map:'https://www.google.com/maps/search/?api=1&query=Hifen+Cascais',ta:'https://www.tripadvisor.co.uk/Restaurant_Review-g189154-d12778440-Reviews-Hifen-Cascais_Lisbon_District_Central_Portugal.html',site:'https://www.hifenrestaurant.com/',
- near:['cascais','senhora','viagraca']},
+ near:['cascais','senhora','piteu']},
 senhora:{
  t:'Senhora do Monte',k:'The grand sunset',day:'Wednesday 22',time:'20:00 · sunset 20:56',
  hero:'assets/lisbon-sunset-panorama.jpg',photos:['assets/lisbon-sunset-panorama.jpg','assets/senhora.jpg','assets/castelo-sunset.jpg'],
  intro:'The widest central Lisbon panorama: castle, Baixa, the Tagus and the bridge all read clearly from this high Graça terrace as the sun drops behind them.',
  family:'Taxi up and keep your energy for the view. Stand slightly away from the central rail for a calmer family spot as the light turns.',
  why:'Lisbon’s great reveal, saved for the last full evening — the whole week’s geography visible in one glowing sweep.',
- love:'The most complete panoramic view in central Lisbon.',know:'No longer a secret — expect company at golden hour and limited seating.',move:'Arrive by 20:00, watch the sun go at 20:56, then walk two minutes to Via Graça while the sky is still pink.',
+ love:'The most complete panoramic view in central Lisbon.',know:'No longer a secret — expect company at golden hour and limited seating.',move:'Arrive by 20:00, watch the sun go at 20:56, then walk down to O Pitéu da Graça while the sky is still pink.',
  visit:'About an hour',best:'40 minutes before sunset',
  map:'https://www.google.com/maps/search/?api=1&query=Miradouro+da+Senhora+do+Monte',site:'https://www.visitlisboa.com/en/places/miradouro-da-senhora-do-monte',
- near:['viagraca','portas','alfama']},
-viagraca:{
- t:'Via Graça',k:'Dinner with the view',day:'Wednesday 22',time:'21:20',rating:'★ 4.5 Google',
- hero:'assets/castelo-sunset.jpg',photos:['assets/castelo-sunset.jpg','assets/lisbon-sunset-panorama.jpg','assets/senhora.jpg'],
- intro:'Refined Portuguese cooking behind windows that look across old Lisbon — the restaurant continues the viewpoint rather than replacing it.',
- family:'The natural finale to the grand-view evening: the same panorama carried into dinner, with the city lights coming up as the plates arrive.',
- why:'View and kitchen in one room, two minutes’ walk from the miradouro — no journey between the evening’s two acts.',
- love:'Portuguese cooking paired with a remarkable view.',know:'A window table makes the experience — and the kitchen still matters more than the seat.',move:'Request a window or view table when booking 21:20, and accept a good inner table gracefully if the window row is gone.',
- visit:'About 2 hours',best:'Reserved dinner after sunset',
- map:'https://www.google.com/maps/search/?api=1&query=Via+Graca+Restaurant+Lisbon',site:'https://www.restauranteviagraca.pt/en/',
+ near:['piteu','portas','alfama']},
+piteu:{
+ t:'O Pitéu da Graça',k:'Neighbourhood dinner · to book',day:'Wednesday 22',time:'21:20',
+ hero:'assets/polvo-lagareiro.jpg',photos:['assets/polvo-lagareiro.jpg','assets/sardinhas.jpg','assets/ameijoas.jpg'],
+ intro:'A convivial Graça restaurant serving generous Portuguese classics in a relaxed, unpretentious dining room where the cooking matters more than presentation.',
+ family:'A comfortable choice after sunset: familiar grilled fish and meat, substantial portions and an informal atmosphere that works naturally for the four of you.',
+ why:'It replaces the formality of a view-led restaurant with the neighbourhood character and traditional cooking you wanted, while keeping the evening in Graça.',
+ love:'Generous traditional dishes, warm service and a genuine neighbourhood atmosphere.',know:'It is popular and the tables are close together. You have chosen it, but no reservation request has been made yet.',move:'Request a table for four at 21:20 on Wednesday 22 July, or the nearest available time after sunset. Allow about ten minutes to walk down from Senhora do Monte.',
+ visit:'About 90 minutes',best:'Book after sunset',
+ map:'https://www.google.com/maps/search/?api=1&query=O+Piteu+da+Graca+Lisbon',ta:'https://www.tripadvisor.com.au/Restaurant_Review-g189158-d2091618-Reviews-Restaurante_O_Piteu_da_Graca-Lisbon_Lisbon_District_Central_Portugal.html',
  near:['senhora','alfama','portas']},
 portas:{
  t:'Portas do Sol & Santa Luzia',k:'Sunrise photography',day:'Thursday 23',time:'05:45–07:30 · sunrise 06:30',
@@ -526,7 +526,7 @@ if(!place){
  app.innerHTML=`
  <header class="hero"><img class="hero-img" src="${place.hero}" alt="${esc(place.t)}"><div class="shell hero-inner"><div class="eyebrow">${esc(place.k)} · ${esc(place.day)}</div><h1>${esc(place.t)}</h1><p class="hero-deck">${esc(place.intro)}</p><div class="hero-meta"><span>When / ${esc(place.time)}</span><span>Allow / ${esc(place.visit)}</span><span>Best / ${esc(place.best)}</span></div></div></header>
  <main><div class="shell">
- <section class="intro-grid"><div><p class="eyebrow" style="color:var(--coral)">Why it earns its place</p><p class="lead">${esc(place.why)}</p>${place.rating?`<div class="chips"><span class="chip rating">${esc(place.rating)}</span></div>`:''}<div class="actions"><a class="action primary" href="${place.map}" target="_blank" rel="noopener">Google Maps & reviews ↗</a><a class="action" href="${ta}" target="_blank" rel="noopener">Tripadvisor ↗</a><a class="action" href="${place.site}" target="_blank" rel="noopener">Official information ↗</a></div></div><aside class="family-note"><strong>The family lens</strong>${esc(place.family)}</aside></section>
+ <section class="intro-grid"><div><p class="eyebrow" style="color:var(--coral)">Why it earns its place</p><p class="lead">${esc(place.why)}</p>${place.rating?`<div class="chips"><span class="chip rating">${esc(place.rating)}</span></div>`:''}<div class="actions"><a class="action primary" href="${place.map}" target="_blank" rel="noopener">Google Maps & reviews ↗</a><a class="action" href="${ta}" target="_blank" rel="noopener">Tripadvisor ↗</a>${place.site?`<a class="action" href="${place.site}" target="_blank" rel="noopener">Official information ↗</a>`:''}</div></div><aside class="family-note"><strong>The family lens</strong>${esc(place.family)}</aside></section>
  <section class="section"><div class="section-head"><h2>See the place</h2><p>Open any photograph full screen. Sunrise and sunset stops are shown in the light you will actually find them in.</p></div><div class="gallery g${photos.length}">${photos.map((src,i)=>`<button type="button" data-photo="${i}" aria-label="Open photograph ${i+1} of ${esc(place.t)}"><img loading="${i?'lazy':'eager'}" src="${src}" alt="${esc(place.t)} photograph ${i+1}"></button>`).join('')}</div><p class="caption-line">Photography: Wikimedia Commons contributors and the trip’s curated image set; individual licences remain with each creator.</p></section>
  <section class="section"><div class="section-head"><h2>Review pulse</h2><p>Paraphrased themes from public visitor feedback, checked 11 July 2026 — not promotional quotes.</p></div><div class="review-grid"><article class="review"><span class="review-label">What people love</span><p>${esc(place.love)}</p></article><article class="review"><span class="review-label">Worth knowing</span><p>${esc(place.know)}</p></article><article class="review"><span class="review-label">Our best move</span><p>${esc(place.move)}</p></article></div><p class="source-note">Ratings and hours change — open the live listing above before relying on either.</p></section>
  <section class="section"><div class="practical"><div><small>Allow</small><strong>${esc(place.visit)}</strong></div><div><small>Best moment</small><strong>${esc(place.best)}</strong></div><div><small>In your week</small><strong>${esc(place.day)}</strong></div></div></section>
